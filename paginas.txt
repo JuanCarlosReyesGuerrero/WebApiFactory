@@ -1,0 +1,42 @@
+EAN
+
+https://www.youtube.com/watch?v=iublAXAm8HQ
++http://benfoster.io/blog/using-the-view-factory-pattern-in-aspnet-mvc
+https://www.codeproject.com/Tips/732449/Understanding-and-Extending-Controller-Factory-i-3
+
+https://www.c-sharpcorner.com/article/consuming-web-apis-in-asp-net-core-mvc-application/
+
+https://docs.microsoft.com/en-us/aspnet/web-api/overview/advanced/dependency-injection
+
+https://dzone.com/articles/custom-controller-factory
+
+https://jonmunoa.blog/2017/03/07/patron-de-diseno-factory-method/
+
+http://desarrollochichipato.blogspot.com/2015/06/patron-de-diseno-factory-method.html
+
+
+CAMPOS SAP MTK
+
+Mapeo para Marketing
+Formulario Programas Continuada - Formal	
+Formulario Egresados	
+Formulario Inscripción en Línea formal	
+Formulario Inscripción en Línea Continuada	
+B2B	
+ChatBot	
+Formulario Test de orientación pregrado APP
+Formulario Test de orientación posgrado APP
+Internacionalización App Movil
+Universia
+Guía Acádemica
+LEAD GENERATOR
+Facebook
+Linkelin
+
+
+
+
+
+
+https://github.com/jonmunoa/factorymethod/blob/master/FactoryMethod/IPizza.cs
+https://www.youtube.com/watch?v=iublAXAm8HQ
