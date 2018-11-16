@@ -58,16 +58,15 @@ namespace WebApiFactory.Controllers
         //public void Post([FromBody]string value)
         public HttpResponseMessage Post([FromBody] string product)
         {
-
             ProgramaContinuadaModel request = null;
             request = new ProgramaContinuadaModel();
-
-            //string json = "{\"Description\":\" Compartir conocimiento \",\"Name 1\":\"estradawebgroup\"}";
+            
             Dictionary<string, string> j = JsonConvert.DeserializeObject<Dictionary<string, string>>(product);
             dynamic pr = JsonConvert.DeserializeObject(product);
             foreach (var kv in j)
             {
-                request.PrimerNombre = kv.Key;
+                if (kv.Key.Contains("primer nombre"))
+                    request.PrimerNombre = kv.Value;
                 //var g = kv.Key.Replace(" ", "_");
                 //Console.WriteLine(g);
             }

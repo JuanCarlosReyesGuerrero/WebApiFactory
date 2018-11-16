@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -16,22 +17,43 @@ namespace WebApiFactory.Controllers
         /// </summary>
         /// <param name="datosFormulario"></param>
         /// <returns></returns>
-        public IHttpActionResult PostInternacionalizacionMovil(InternacionalizacionMovilModel datosFormulario)
+        public HttpResponseMessage PostInternacionalizacionMovil([FromBody] string product)
         {
+            if (string.IsNullOrEmpty(product))
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Modelo de datos inválido");
+
+            InternacionalizacionMovilModel request = null;
+            request = new InternacionalizacionMovilModel();
+
+            Dictionary<string, string> j = JsonConvert.DeserializeObject<Dictionary<string, string>>(product);
+            dynamic pr = JsonConvert.DeserializeObject(product);
+            foreach (var kv in j)
+            {
+                if (kv.Key.Contains("PrimerNombre")) request.PrimerNombre = kv.Value;
+                if (kv.Key.Contains("Apellidos")) request.Apellidos = kv.Value;
+                if (kv.Key.Contains("Pais")) request.Pais = kv.Value;
+                if (kv.Key.Contains("Email")) request.Email = kv.Value;
+                if (kv.Key.Contains("NumeroTelefono")) request.NumeroTelefono = kv.Value;
+                if (kv.Key.Contains("NumeroTelefonoCelular")) request.NumeroTelefonoCelular = kv.Value;
+                if (kv.Key.Contains("TipoIdentificacion")) request.TipoIdentificacion = kv.Value;
+                if (kv.Key.Contains("NumeroIdentificacion")) request.NumeroIdentificacion = kv.Value;
+                if (kv.Key.Contains("Metodologia")) request.Metodologia = kv.Value;
+                if (kv.Key.Contains("Facultad")) request.Facultad = kv.Value;
+                if (kv.Key.Contains("TituloProgramaMovilidadInternacional")) request.TituloProgramaMovilidadInternacional = kv.Value;
+                if (kv.Key.Contains("FechaEnvio")) request.FechaEnvio = kv.Value;
+            }
+
             ApiBusiness mapeoDatos = new ApiBusiness();
 
             try
             {
-                if (!ModelState.IsValid)
-                    return BadRequest("Modelo de datos inválido");
+                var response = mapeoDatos.InternacionalizacionMovilBusiness(request);
 
-                var response = mapeoDatos.InternacionalizacionMovilBusiness(datosFormulario);
-
-                return Ok();
+                return Request.CreateResponse(HttpStatusCode.Accepted, "Modelo enviado");
             }
             catch (Exception e)
             {
-                return BadRequest("mensaje de error: " + e.Message);
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "mensaje de error: " + e.Message);
             }
         }
     }
