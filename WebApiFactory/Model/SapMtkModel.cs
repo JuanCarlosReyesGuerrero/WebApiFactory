@@ -419,6 +419,11 @@ namespace WebApiFactory.Model
         public string NumeroTelefono { get; set; }
         public string HorarioPrefiereSerContactado { get; set; }
         public string CuandoQuieresIniciarClase { get; set; }
+
+        public string FormId { get; set; }
+        public string CreatedTime { get; set; }
+        public string Id { get; set; }
+        public string Comentarios { get; set; }
     }
 
     public class LinkedinModel
